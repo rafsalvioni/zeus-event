@@ -1,0 +1,30 @@
+{
+    "name": "rafsalvioni/zeus-event",
+    "description": "provides a observer pattern api",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "event",
+        "zeus"
+    ],
+    "homepage": "https://github.com/rafsalvioni/zeus-event",
+    "autoload": {
+        "psr-4": {
+            "Zeus\\Event\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ZeusTest\\Event\\": "test/"
+        }
+    },
+    "require": {
+        "php": ">=5.4 <6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.6"
+    },
+    "suggest": {
+    },
+    "extra": {
+    }
+}
