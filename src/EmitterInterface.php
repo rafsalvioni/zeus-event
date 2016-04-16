@@ -10,13 +10,13 @@ namespace Zeus\Event;
 interface EmitterInterface
 {
     /**
-     * Register a observer.
+     * Attach a observer in a event.
      * 
      * @param string $event
      * @param callable $observer
      * @return static
      */
-    public function registerObserver($event, callable $observer);
+    public function on($event, callable $observer);
     
     /**
      * Remove a observer

@@ -23,13 +23,13 @@ class EmitterTest extends \PHPUnit_Framework_TestCase
     private $observer;
     
     public function setUp() {
-        $this->emitter = $this->getMockForTrait('\\Zeus\\Event\\EmitterTrait');
+        $this->emitter = new Emitter();
         $this->observer = function ($emitter, $event, $a, $b) {
             echo 'true->' . makeOutput([$event, $a, $b]);
         };
-        $this->emitter->registerObserver(self::EVENT1, $this->observer);
-        $this->emitter->registerObserver(self::EVENT1, $this->observer);
-        $this->emitter->registerObserver(self::EVENT2, $this->observer);
+        $this->emitter->on(self::EVENT1, $this->observer);
+        $this->emitter->on(self::EVENT1, $this->observer);
+        $this->emitter->on(self::EVENT2, $this->observer);
     }
     
     /**
@@ -70,7 +70,7 @@ class EmitterTest extends \PHPUnit_Framework_TestCase
         $this->emitter->removeObserver(self::EVENT2, $this->observer);
         $this->expectOutputString('');
         $this->emitter->emit(self::EVENT2);
-        $this->emitter->registerObserver(self::EVENT2, $this->observer);
+        $this->emitter->on(self::EVENT2, $this->observer);
     }
     
     /**
@@ -80,6 +80,6 @@ class EmitterTest extends \PHPUnit_Framework_TestCase
         $this->emitter->removeAllObservers(self::EVENT2);
         $this->expectOutputString('');
         $this->emitter->emit(self::EVENT2);
-        $this->emitter->registerObserver(self::EVENT2, $this->observer);
+        $this->emitter->on(self::EVENT2, $this->observer);
     }
 }

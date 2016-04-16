@@ -39,7 +39,7 @@ trait EmitterTrait
      * @param callable $observer
      * @return self
      */
-    public function registerObserver($event, callable $observer)
+    public function on($event, callable $observer)
     {
         if (!isset($this->observers[$event])) {
             $this->observers[$event] = [];
