@@ -15,13 +15,13 @@ trait EmitterTrait
      * @var array
      */
     private $observers = [];
-    
+
     /**
      * 
      * @param string $event
-     * @return self
+     * @return EmitterInterface
      */
-    public function emit($event)
+    public function emit(string $event): EmitterInterface
     {
         if (isset($this->observers[$event])) {
             $args = \func_get_args();
@@ -37,9 +37,9 @@ trait EmitterTrait
      * 
      * @param string $event
      * @param callable $observer
-     * @return self
+     * @return EmitterInterface
      */
-    public function on($event, callable $observer)
+    public function on(string $event, callable $observer): EmitterInterface
     {
         if (!isset($this->observers[$event])) {
             $this->observers[$event] = [];
@@ -51,9 +51,9 @@ trait EmitterTrait
     /**
      * 
      * @param string $event
-     * @return self
+     * @return EmitterInterface
      */
-    public function removeAllObservers($event = null)
+    public function removeAllObservers(string $event = null): EmitterInterface
     {
         if ($event && isset($this->observers[$event])) {
             unset($this->observers[$event]);
@@ -68,9 +68,9 @@ trait EmitterTrait
      * 
      * @param string $event
      * @param callable $observer
-     * @return self
+     * @return EmitterInterface
      */
-    public function removeObserver($event, callable $observer)
+    public function removeObserver(string $event, callable $observer): EmitterInterface
     {
         if (
             isset($this->observers[$event])

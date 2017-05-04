@@ -14,18 +14,18 @@ interface EmitterInterface
      * 
      * @param string $event
      * @param callable $observer
-     * @return static
+     * @return EmitterInterface
      */
-    public function on($event, callable $observer);
+    public function on(string $event, callable $observer): EmitterInterface;
     
     /**
      * Remove a observer
      * 
      * @param string $event
      * @param callable $observer
-     * @return static
+     * @return EmitterInterface
      */
-    public function removeObserver($event, callable $observer);
+    public function removeObserver(string $event, callable $observer): EmitterInterface;
     
     /**
      * Renmove all observers from object.
@@ -33,9 +33,9 @@ interface EmitterInterface
      * If $event is null, remove all observers of all events.
      * 
      * @param string $event
-     * @return static
+     * @return EmitterInterface
      */
-    public function removeAllObservers($event = null);
+    public function removeAllObservers(string $event = null): EmitterInterface;
     
     /**
      * Notify the object's observers a event occurence.
@@ -44,7 +44,7 @@ interface EmitterInterface
      * and all others arguments given.
      * 
      * @param string $event
-     * @return static
+     * @return EmitterInterface
      */
-    public function emit($event);
+    public function emit(string $event): EmitterInterface;
 }
